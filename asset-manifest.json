@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/React--bookself-app/static/css/main.50279c94.chunk.css",
+    "main.js": "/React--bookself-app/static/js/main.db90b79a.chunk.js",
+    "main.js.map": "/React--bookself-app/static/js/main.db90b79a.chunk.js.map",
+    "runtime-main.js": "/React--bookself-app/static/js/runtime-main.47651fac.js",
+    "runtime-main.js.map": "/React--bookself-app/static/js/runtime-main.47651fac.js.map",
+    "static/js/2.f17fa8c9.chunk.js": "/React--bookself-app/static/js/2.f17fa8c9.chunk.js",
+    "static/js/2.f17fa8c9.chunk.js.map": "/React--bookself-app/static/js/2.f17fa8c9.chunk.js.map",
+    "index.html": "/React--bookself-app/index.html",
+    "precache-manifest.c2d8b0f30aa0dc14727da5850d01ad3c.js": "/React--bookself-app/precache-manifest.c2d8b0f30aa0dc14727da5850d01ad3c.js",
+    "service-worker.js": "/React--bookself-app/service-worker.js",
+    "static/css/main.50279c94.chunk.css.map": "/React--bookself-app/static/css/main.50279c94.chunk.css.map",
+    "static/js/2.f17fa8c9.chunk.js.LICENSE.txt": "/React--bookself-app/static/js/2.f17fa8c9.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/React--bookself-app/static/media/books.ee40a1b1.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.47651fac.js",
+    "static/js/2.f17fa8c9.chunk.js",
+    "static/css/main.50279c94.chunk.css",
+    "static/js/main.db90b79a.chunk.js"
+  ]
+}
