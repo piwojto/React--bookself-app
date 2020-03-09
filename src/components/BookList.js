@@ -6,38 +6,49 @@ import Modal from './Modal';
 class BookList extends Component {
   constructor(props) {
       super(props);
-      this.state = { isOpen: false };
+      this.state = { 
+        isOpen: false,
+        selectedBook: '',
+      };
     }
-  toggleModal = () => {
-    this.setState({ isOpen: !this.state.isOpen
-    });
-    // console.log(this.props.volumeInfo)
+  toggleModal = (props) => {
+    this.setState({ isOpen: !this.state.isOpen});
+    const selectedBook=props;
+    this.setState({selectedBook});
+    // console.log(props)
+    // console.log(this.state.selectedBook)
   }
+
   render () {
-    
+    console.log(this.props.bookList);
   return (
-    <div>
-        
+    <div className="container">
+      {/* {this.props.bookList ? (
+        <h2>no books !!</h2>
+        ) : ( */}
+        {this.props.noBooks}
+    <div className="row">
       {this.props.bookList.map((book) => {
         // console.log(book.volumeInfo.title);
         return (
           <div 
-          key={book.id} book={book.volumeInfo} className="Book"
-          className="d-inline-flex m-2 border border-secondary rounded-lg w-25 h-75 p-3 overflow-hidden">
+          key={book.id}
+          // book={book.volumeInfo.title} 
+          className="col-md-3 border border-secondary rounded-lg"
+          >
                   <div 
-                  className="book"
-                  onClick={this.toggleModal}
-                    // console.log(this.props)
-                    
-                    > 
-                    <div className="h-75">
+                  className="box m-2 overflow-hidden"
+                  onClick={(event)=>{
+                  {this.toggleModal(book.volumeInfo)}
+                  }
+                  }> 
+                    <div>
                       { book.volumeInfo.imageLinks !== undefined &&
                         <img src={book.volumeInfo.imageLinks.smallThumbnail} alt=""/>
                         }
                     <div>
                       <div>Title: {book.volumeInfo.title}</div>
                       <div>Authors: {book.volumeInfo.authors || 'N/A'}</div>
-                      <div>id: {book.id}</div>
                     </div>
                     </div>
                   </div>
@@ -48,9 +59,10 @@ class BookList extends Component {
       }
       <Modal show={this.state.isOpen}
         onClose={this.toggleModal}>
-          {/* {this.props.bookList} */}
-        Tutaj modal
+          {this.state.selectedBook}
       </Modal>
+    </div>
+    {/* )} */}
     </div>
     )
   }

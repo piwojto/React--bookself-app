@@ -9,7 +9,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      bookList: []
+      bookList: [],
+      noBooks:0
     }
   }
 
@@ -17,11 +18,24 @@ class App extends Component {
     this.setState({ bookList });
   }
 
+  handleNoBooks = (noBooks) => {
+    // this.setState({ bookList });
+    this.setState({noBooks:400});
+  }
+
   render() {
+    console.log(this.state.noBooks);
+    console.log({onSearchResult:'400'});
     return (
       <div className="App">
-        <SearchBook onSearchResult={this.handleBookList}/>
-        <BookList bookList={this.state.bookList}/>
+        <SearchBook onSearchResult={this.handleBookList}
+        
+        />
+        <BookList 
+          bookList={this.state.bookList}
+          // noBooks={this.state.handleNoBooks}
+          />
+        
        </div>
     );
   }

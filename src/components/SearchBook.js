@@ -11,7 +11,8 @@ class SearchBook extends Component {
         super(props);
 
         this.state = {
-        textInput: ''
+        textInput: '',
+        // noBooks:0
         }
   }
 
@@ -19,20 +20,29 @@ class SearchBook extends Component {
         axios.get(booksUrl + this.state.textInput + '&maxResults=40')
         .then((response) => {
             this.props.onSearchResult(response.data.items)
-        }).catch((error) => {
+            // this.setState({noBooks:response.status});
+            // console.log(this.state.noBooks)
+        }).catch((error,noBooks) => {
             console.log('error ',error);
+            this.setState({noBooks:400});
+            console.log(this.state.noBooks)
+            
         });
         }  
 
   handleEvent = (event) => {
     this.setState({ textInput: event.target.value });
-
+    if(event.target.value==='')
+    (console.log('no books'))
+    else (
+    // console.log(event.target.value)
     event.key === 'Enter' && this.getBooks()
+    )
   }
 
   render() {
     return (
-       <div>
+       <div className="container bcg p-2 rounded-lg">
             <h2>Google Books Search</h2> 
             <div className="container d-inline-flex">  
                 <input
@@ -50,7 +60,7 @@ class SearchBook extends Component {
                     Search
                 </button>
         </div> 
-      </div>
+        </div>
     )
   }
 }
