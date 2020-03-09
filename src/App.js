@@ -10,8 +10,18 @@ class App extends Component {
 
     this.state = {
       bookList: [],
-      noBooks:0
+      noBooks:0,
+      isOpen: false,
+      selectedBook: '',
     }
+  }
+
+  toggleModal = (props) => {
+    this.setState({ isOpen: !this.state.isOpen});
+    const selectedBook=props;
+    this.setState({selectedBook});
+    // console.log(props)
+    // console.log(this.state.selectedBook)
   }
 
   handleBookList = (bookList) => {
@@ -33,8 +43,16 @@ class App extends Component {
         />
         <BookList 
           bookList={this.state.bookList}
-          // noBooks={this.state.handleNoBooks}
+
+          onClick={(event)=>{
+            this.toggleModal(book.volumeInfo)}
+            }
+            
           />
+          <Modal show={this.state.isOpen}
+        onClose={this.toggleModal}>
+          {this.state.selectedBook}
+      </Modal>
         
        </div>
     );
