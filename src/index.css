@@ -22,7 +22,6 @@ body {
   background-color: white;
   border-radius: 5px;
   max-width: 500px;
-  /* min-height: 30px; */
   max-height: 500px;
   margin: 0 auto;
   padding: 30px;
@@ -42,12 +41,8 @@ body {
   flex-direction: column;
 }
 
-.box {
-  /* background-color: white; */
-}
 .box:hover {
   transform: scale(1.05);
-  /* background-color: rgb(227, 227, 235); */
 }
 
 .bcg {
@@ -65,4 +60,12 @@ h2 {
   margin-bottom: -2px;
   font-weight: 600;
   font-size: 3rem;
+}
+
+form {
+  display: flex;
+}
+
+input {
+  min-width: 50%;
 }

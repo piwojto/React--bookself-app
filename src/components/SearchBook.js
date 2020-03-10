@@ -38,12 +38,8 @@ class SearchBook extends Component {
         
   handleEvent = (event) => {
     this.setState({ textInput: event.target.value });
-    if(event.target.value==='')
-    (console.log('no books'))
-    else (
-    // console.log(event.target.value)
     event.key === 'Enter' && this.getBooks()
-    )
+    
   }
 
    render() {
@@ -71,14 +67,16 @@ class SearchBook extends Component {
     
        <div className="container bcg p-2 rounded-lg">
             <h2>Google Books Search</h2> 
-            <div className="container d-inline-flex">  
+            <div className="container d-inline-flex"> 
+            <form> 
                 <input
                     type="text"
                     name="search"
                     className="form-control mr-3 mb-5"
                     placeholder="Search for Books ..."
                     autoComplete="off"
-                    onKeyPress={event => this.handleEvent(event)}
+                    value={this.textInput}
+                    onChange={event=>this.handleEvent(event)}
                 />
                 <button
                     type="submit"
@@ -86,6 +84,7 @@ class SearchBook extends Component {
                     onClick={this.getBooks}>
                     Search
                 </button>
+                </form>
         </div> 
         
         </div>
