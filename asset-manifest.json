@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/React--bookself-app/static/css/main.50279c94.chunk.css",
-    "main.js": "/React--bookself-app/static/js/main.76158982.chunk.js",
-    "main.js.map": "/React--bookself-app/static/js/main.76158982.chunk.js.map",
+    "main.css": "/React--bookself-app/static/css/main.f402baa8.chunk.css",
+    "main.js": "/React--bookself-app/static/js/main.2f6eeac2.chunk.js",
+    "main.js.map": "/React--bookself-app/static/js/main.2f6eeac2.chunk.js.map",
     "runtime-main.js": "/React--bookself-app/static/js/runtime-main.47651fac.js",
     "runtime-main.js.map": "/React--bookself-app/static/js/runtime-main.47651fac.js.map",
     "static/js/2.f17fa8c9.chunk.js": "/React--bookself-app/static/js/2.f17fa8c9.chunk.js",
     "static/js/2.f17fa8c9.chunk.js.map": "/React--bookself-app/static/js/2.f17fa8c9.chunk.js.map",
     "index.html": "/React--bookself-app/index.html",
-    "precache-manifest.366572610d7e34debc5e1a294b5a2413.js": "/React--bookself-app/precache-manifest.366572610d7e34debc5e1a294b5a2413.js",
+    "precache-manifest.6d261f48afd022b5b072d55d7bc89dd6.js": "/React--bookself-app/precache-manifest.6d261f48afd022b5b072d55d7bc89dd6.js",
     "service-worker.js": "/React--bookself-app/service-worker.js",
-    "static/css/main.50279c94.chunk.css.map": "/React--bookself-app/static/css/main.50279c94.chunk.css.map",
+    "static/css/main.f402baa8.chunk.css.map": "/React--bookself-app/static/css/main.f402baa8.chunk.css.map",
     "static/js/2.f17fa8c9.chunk.js.LICENSE.txt": "/React--bookself-app/static/js/2.f17fa8c9.chunk.js.LICENSE.txt",
     "static/media/index.css": "/React--bookself-app/static/media/books.ee40a1b1.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.47651fac.js",
     "static/js/2.f17fa8c9.chunk.js",
-    "static/css/main.50279c94.chunk.css",
-    "static/js/main.76158982.chunk.js"
+    "static/css/main.f402baa8.chunk.css",
+    "static/js/main.2f6eeac2.chunk.js"
   ]
 }
