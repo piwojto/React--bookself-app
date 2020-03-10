@@ -3,51 +3,65 @@ import Modal from './Modal';
 
 // lista kafelków z obrazkami i tytułami i autorem
 
-const Book = (props) => {
-   const {book} = props;
+class BookList extends Component {
+  constructor(props) {
+      super(props);
+      this.state = { 
+        isOpen: false,
+        selectedBook: '',
+      };
+    }
+  toggleModal = (props) => {
+    this.setState({ isOpen: !this.state.isOpen});
+    const selectedBook=props;
+    this.setState({selectedBook});
+    // console.log(props)
+    // console.log(this.state.selectedBook)
+  }
 
-   return (
-    <div 
-    className="box m-2 overflow-hidden"
-    > 
-      <div>
-        {book.imageLinks !== undefined &&
-          <img src={book.imageLinks.smallThumbnail} alt=""/>
-          }
-      <div>
-        <div>Title: {book.title}</div>
-        <div>Authors: {book.authors || 'N/A'}</div>
-      </div>
-      </div>
-    </div>
-   )
-} 
-
-const BookList = (props) => {
- 
-  console.log(props.bookList);
+  render () {
+    // console.log(this.props.bookList);
   return (
     <div className="container">
-   
+        {this.props.noBooks}
     <div className="row">
-      {props.bookList.map((book) => {
+      {this.props.bookList.map((book) => {
         // console.log(book.volumeInfo.title);
         return (
           <div 
+          key={book.id}
           // book={book.volumeInfo.title} 
           className="col-md-3 border border-secondary rounded-lg"
           >
-                  <Book key={book.id} book={book.volumeInfo}/>
+                  <div 
+                  className="box m-2 overflow-hidden"
+                  onClick={(event)=>{
+                  {this.toggleModal(book.volumeInfo)}
+                  }
+                  }> 
+                    <div>
+                      { book.volumeInfo.imageLinks !== undefined &&
+                        <img src={book.volumeInfo.imageLinks.smallThumbnail} alt=""/>
+                        }
+                    <div>
+                      <div>Title: {book.volumeInfo.title}</div>
+                      <div>Authors: {book.volumeInfo.authors || 'N/A'}</div>
+                    </div>
+                    </div>
+                  </div>
             </div>
             )
           }
         )
       }
-      
+      <Modal show={this.state.isOpen}
+        onClose={this.toggleModal}>
+          {this.state.selectedBook}
+      </Modal>
     </div>
-    {/* )} */}
     </div>
     )
+  }
 }  
 
 export default BookList;

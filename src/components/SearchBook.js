@@ -12,11 +12,16 @@ class SearchBook extends Component {
 
         this.state = {
         textInput: '',
-        // noBooks:0
+        imBusy: false,
+        noBooks:0
         }
-  }
+    }
+    componentDidMount() {
+        this.getBooks();
+    }
 
     getBooks = () => {
+        this.setState({imBusy:true})
         axios.get(booksUrl + this.state.textInput + '&maxResults=40')
         .then((response) => {
             this.props.onSearchResult(response.data.items)
@@ -26,10 +31,11 @@ class SearchBook extends Component {
             console.log('error ',error);
             this.setState({noBooks:400});
             console.log(this.state.noBooks)
-            
+            // this.setState({imBusy:false})
         });
+        // return 
         }  
-
+        
   handleEvent = (event) => {
     this.setState({ textInput: event.target.value });
     if(event.target.value==='')
@@ -40,8 +46,29 @@ class SearchBook extends Component {
     )
   }
 
-  render() {
+   render() {
+       const {imBusy, noBooks} = this.state
+       if(imBusy){
+        return (<h4>Searching, please wait</h4>)
+       }
+       setTimeout(()=>{
+        this.setState({
+            imBusy:false
+        })
+    }, 5000)
+
+    if(noBooks===400){
+        return (<h4>Searching error</h4>)
+       }
+       setTimeout(()=>{
+        this.setState({
+            noBooks:0
+        })
+    }, 5000)
+       
     return (
+         
+    
        <div className="container bcg p-2 rounded-lg">
             <h2>Google Books Search</h2> 
             <div className="container d-inline-flex">  
@@ -60,7 +87,9 @@ class SearchBook extends Component {
                     Search
                 </button>
         </div> 
+        
         </div>
+        
     )
   }
 }
