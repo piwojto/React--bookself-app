@@ -31,7 +31,8 @@ class App extends Component {
    render() {
       return (
         <div className="App">
-          <SearchBook onSearchResult={this.handleBookList}/>
+          <SearchBook onSearchResult={this.handleBookList}
+          />
           <LoadingIndicator/>
           <BookList bookList={this.state.bookList} />
         </div>

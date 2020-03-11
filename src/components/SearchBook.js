@@ -8,19 +8,21 @@ import { trackPromise } from 'react-promise-tracker';
 const booksUrl="https://www.googleapis.com/books/v1/volumes?q="; 
 
 class SearchBook extends Component {
-  state = {textInput: '', query: ''}
+  state = {textInput: ''}
 
     getBooks = () => {
         trackPromise(
         axios.get(booksUrl + this.state.textInput + '&maxResults=40')
         .then((response) => {
+          if((response.data.totalItems===0)) {
+            this.props.onSearchResult('error')}
+            else 
             this.props.onSearchResult(response.data.items)
-        }).catch((error,noBooks) => {
-            console.log('error ',error);
-            // console.log(this.state.noBooks)
-            alert('Error: search query is empty!');
-        }))
-        }  
+        }).catch((err => {
+          console.error(err)
+        })
+        ))
+      } 
 
   handleEvent = (event) => {
     this.setState({ textInput: event.target.value });
