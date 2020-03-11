@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import { trackPromise } from 'react-promise-tracker';
 
 // input tekstowy do wpisania nazwy filtra
 // Button do obsługi zapytania axiosa z wpisanym przez użytkownika query
@@ -7,88 +8,55 @@ import axios from "axios";
 const booksUrl="https://www.googleapis.com/books/v1/volumes?q="; 
 
 class SearchBook extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-        textInput: '',
-        imBusy: false,
-        noBooks:0
-        }
-    }
-    componentDidMount() {
-        this.getBooks();
-    }
-
+    state = {textInput: ''}
+  
     getBooks = () => {
-        this.setState({imBusy:true})
+        trackPromise(
         axios.get(booksUrl + this.state.textInput + '&maxResults=40')
         .then((response) => {
             this.props.onSearchResult(response.data.items)
-            // this.setState({noBooks:response.status});
-            // console.log(this.state.noBooks)
         }).catch((error,noBooks) => {
             console.log('error ',error);
-            this.setState({noBooks:400});
             console.log(this.state.noBooks)
-            // this.setState({imBusy:false})
-        });
-        // return 
+        }))
         }  
-        
+
   handleEvent = (event) => {
     this.setState({ textInput: event.target.value });
-    event.key === 'Enter' && this.getBooks()
-    
+    event.key === 'Enter' && this.getBooks() 
   }
 
-   render() {
-       const {imBusy, noBooks} = this.state
-       if(imBusy){
-        return (<h4>Searching, please wait</h4>)
-       }
-       setTimeout(()=>{
-        this.setState({
-            imBusy:false
-        })
-    }, 5000)
+  keyPressed =(event) => {
+    if (event.key === "Enter") {
+        event.key === 'Enter' && this.getBooks() 
+    }
+  }
 
-    if(noBooks===400){
-        return (<h4>Searching error</h4>)
-       }
-       setTimeout(()=>{
-        this.setState({
-            noBooks:0
-        })
-    }, 5000)
-       
+  render() {
     return (
-         
-    
+      <div>
        <div className="container bcg p-2 rounded-lg">
-            <h2>Google Books Search</h2> 
-            <div className="container d-inline-flex"> 
-            <form> 
-                <input
-                    type="text"
-                    name="search"
-                    className="form-control mr-3 mb-5"
-                    placeholder="Search for Books ..."
-                    autoComplete="off"
-                    value={this.textInput}
-                    onChange={event=>this.handleEvent(event)}
-                />
-                <button
-                    type="submit"
-                    className="btn btn-secondary mb-5"
-                    onClick={this.getBooks}>
-                    Search
-                </button>
-                </form>
-        </div> 
-        
+          <h2>Google Books Search</h2> 
+          <div className="container d-inline-flex">  
+            <input
+              type="text"
+              name="search"
+              value={this.state.input}
+              className="form-control mr-3 mb-5"
+              placeholder="Search for Books ..."
+              autoComplete="off"
+              onChange={event => this.handleEvent(event)}
+              onKeyPress={event =>this.keyPressed(event)}
+            />
+            <button
+              type="submit"
+              className="btn btn-secondary mb-5"
+              onClick={this.getBooks}>
+              Search
+            </button>
+          </div> 
         </div>
-        
+      </div>
     )
   }
 }
