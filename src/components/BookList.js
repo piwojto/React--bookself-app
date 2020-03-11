@@ -13,10 +13,12 @@ class BookList extends Component {
   }
 
   render () {
+    // console.log(this.props.bookList.length)
     return (
       <div className="container">
         <div className="row">
-          {this.props.bookList.map((book) => {
+        {this.props.bookList.length===undefined ? (<h1 className="text-center">No Results to Display</h1>) 
+        : (this.props.bookList.map((book) => {
             return (
               <div 
                 key={book.id}
@@ -37,15 +39,20 @@ class BookList extends Component {
                   </div>
                 </div>
               </div>
-            )
-          })}
-          <Modal show={this.state.isOpen}
-            onClose={this.toggleModal}>
-              {this.state.selectedBook}
-          </Modal>
+            )}
+          )
+          // <Modal show={this.state.isOpen}
+          // //   onClose={this.toggleModal}>
+          // //   {this.state.selectedBook}
+          // // </Modal>     
+         
+      )
+          
+        }
         </div>
       </div>
-    )
+      
+    )    
   }
 }  
 
