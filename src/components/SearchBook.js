@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import { trackPromise } from 'react-promise-tracker';
 
 // input tekstowy do wpisania nazwy filtra
 // Button do obsługi zapytania axiosa z wpisanym przez użytkownika query
@@ -8,21 +7,33 @@ import { trackPromise } from 'react-promise-tracker';
 const booksUrl="https://www.googleapis.com/books/v1/volumes?q="; 
 
 class SearchBook extends Component {
-  state = {textInput: ''}
+  state = {textInput: '', imBusy: false}
 
-    getBooks = () => {
+    Loading = (props) => {
+      this.setState({imBusy:false})
+      return (
+      <div className="container">
+        <h6>Loading ...</h6> 
+      </div> )
+    }
+
+      getBooks = () => {
       this.props.onSearchResult('new')
-        trackPromise(
+      this.setState({imBusy:true})
+
         axios.get(booksUrl + this.state.textInput + '&maxResults=40')
         .then((response) => {
           if((response.data.totalItems===0)) {
-            this.props.onSearchResult('error')}
-            else 
+            this.props.onSearchResult('error')
+            this.setState({imBusy:false})}
+            else {
             this.props.onSearchResult(response.data.items)
+            this.setState({imBusy:false})}
         }).catch((err => {
           console.error(err)
         })
-        ))
+        )
+        
       } 
 
   handleEvent = (event) => {
@@ -59,6 +70,7 @@ class SearchBook extends Component {
             </button>
           </div> 
         </div>
+        {(this.state.imBusy) && <h4>Loading ...</h4>}
       </div>
     )
   }
