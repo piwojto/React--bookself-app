@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/React--bookself-app/precache-manifest.c947cecd64b2b06e030a77e2373b1f2f.js"
+  "/React--bookself-app/precache-manifest.8d6b4276f6410b508df9d0f884dd391f.js"
 );
 
 self.addEventListener('message', (event) => {
