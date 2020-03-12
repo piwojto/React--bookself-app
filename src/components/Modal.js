@@ -1,5 +1,4 @@
 import React from 'react';
-// import BookList from './BookList';
 
 // tytuł pozycji
 // autorów

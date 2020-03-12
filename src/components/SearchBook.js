@@ -9,14 +9,6 @@ const booksUrl="https://www.googleapis.com/books/v1/volumes?q=";
 class SearchBook extends Component {
   state = {textInput: '', imBusy: false}
 
-    Loading = (props) => {
-      this.setState({imBusy:false})
-      return (
-      <div className="container">
-        <h6>Loading ...</h6> 
-      </div> )
-    }
-
       getBooks = () => {
       this.props.onSearchResult('new')
       this.setState({imBusy:true})
@@ -33,7 +25,6 @@ class SearchBook extends Component {
           console.error(err)
         })
         )
-        
       } 
 
   handleEvent = (event) => {
