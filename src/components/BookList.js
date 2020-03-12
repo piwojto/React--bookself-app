@@ -13,12 +13,14 @@ class BookList extends Component {
   }
 
   render () {
+    console.log(this.props.bookList)
     return (
       <div className="container">
         <div className="row">
         {(this.props.bookList==='error') 
         ? (<h4 className="text-center">No Results to Display</h4>) 
-        : (
+        : ((this.props.bookList==='new') ? (<h4></h4>) 
+          :
           this.props.bookList.map((book) => {
             return (
               <div 

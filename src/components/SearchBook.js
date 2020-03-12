@@ -11,6 +11,7 @@ class SearchBook extends Component {
   state = {textInput: ''}
 
     getBooks = () => {
+      this.props.onSearchResult('new')
         trackPromise(
         axios.get(booksUrl + this.state.textInput + '&maxResults=40')
         .then((response) => {
@@ -44,7 +45,6 @@ class SearchBook extends Component {
             <input
               type="text"
               name="search"
-              // value={this.state.query}
               className="form-control mr-3 mb-5"
               placeholder="Search for Books ..."
               autoComplete="off"
