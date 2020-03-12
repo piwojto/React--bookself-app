@@ -17,7 +17,7 @@ const LoadingIndicator = props => {
         justifyContent: "space-around",
         alignItems: "center"
         }} >
-        <Loader type="ThreeDots" color="gray" height="80" width="100" />
+        <Loader type="ThreeDots" color="gray"/>
         <h6>Loading ...</h6> 
     </div>  );  
 }
