@@ -70,7 +70,7 @@ class SearchBook extends Component {
             </button>
           </div> 
         </div>
-        {(this.state.imBusy) && <h4>Loading ...</h4>}
+        {(this.state.imBusy) && <div class="loader">Loading...</div>}
       </div>
     )
   }
